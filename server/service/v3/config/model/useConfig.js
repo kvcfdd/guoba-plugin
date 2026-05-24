@@ -11,6 +11,7 @@ const CfgAdapter = await (() => {
 })()
 
 const addGroupPromptProps = CfgAdapter['addGroupPromptProps']
+const extraTabs = CfgAdapter['extraTabs']
 
 // 基础配置
 const baseConfig = {
@@ -373,6 +374,18 @@ const otherConfig = {
           },
         },
         {
+          field: 'autoGroup',
+          label: '添加群聊',
+          bottomHelpMessage: '是否自动同意群邀请，0-仅主人，1-所有人',
+          component: 'RadioGroup',
+          componentProps: {
+            options: [
+              {label: '仅主人', value: 0},
+              {label: '所有人', value: 1},
+            ],
+          },
+        },
+        {
           field: 'autoQuit',
           label: '退群人数',
           bottomHelpMessage: '被好友拉进群时，群人数小于配置值自动退出，设为0表示不处理',
@@ -420,6 +433,11 @@ export function getConfigTabs() {
     tabs.push(genshinConfig)
   }
   tabs.push(otherConfig)
+  if (extraTabs) {
+    for (const tab of Object.values(extraTabs)) {
+      tabs.push(tab)
+    }
+  }
   return tabs
 }
 
@@ -430,6 +448,10 @@ export const configFile = {
   'system.redis': '/config/config/redis.yaml',
   'system.other': '/config/config/other.yaml',
   'system.server': '/config/config/server.yaml',
+
+  'system.aigc': '/config/config/aigc.yaml',
+  'system.milky': '/config/config/milky.yaml',
+  'system.satori': '/config/config/satori.yaml',
 
   'genshin.gacha': '/plugins/genshin/config/gacha.set.yaml',
   'genshin.mys.pubCk': '/plugins/genshin/config/mys.pubCk.yaml',

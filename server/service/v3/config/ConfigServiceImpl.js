@@ -46,10 +46,12 @@ export default class ConfigServiceImpl extends IConfigService {
   needHandleConfigKey = [
     'system.other',
     'system.group',
+    'system.aigc',
   ]
   needHandleFieldKey = [
     'masterQQ', 'disableAdopt', 'whiteGroup', 'blackGroup', 'blackQQ',
     'whiteQQ', 'blackUser', 'whiteUser', 'botAlias', 'enable', 'disable',
+    'group_whitelist', 'qq_blacklist', 'prefix_filter',
   ]
 
   /**

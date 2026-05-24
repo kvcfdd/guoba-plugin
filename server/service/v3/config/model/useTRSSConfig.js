@@ -392,3 +392,384 @@ export const otherConfig = {
     }
   ],
 }
+
+export const aigcConfig = {
+  aigc: [
+    {
+      field: 'enable',
+      label: '启用AIGC',
+      bottomHelpMessage: '是否启用AIGC功能',
+      component: 'Switch',
+    },
+    {
+      field: 'provider',
+      label: 'Provider',
+      bottomHelpMessage: '选择AI提供商',
+      component: 'Select',
+      componentProps: {
+        options: [
+          {label: 'OpenAI', value: 'openai'},
+          {label: 'Google Gemini', value: 'gemini'},
+        ],
+        placeholder: '请选择AI提供商',
+      },
+    },
+    {
+      field: 'system_prompt',
+      label: '系统提示词',
+      bottomHelpMessage: 'AI的系统提示词',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入系统提示词',
+      },
+    },
+    {
+      field: 'openai.endpoint',
+      label: 'OpenAI 接口地址',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入OpenAI接口地址',
+      },
+    },
+    {
+      field: 'openai.api_key',
+      label: 'OpenAI API Key',
+      bottomHelpMessage: '多Key用英文逗号分隔',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入OpenAI API Key',
+      },
+    },
+    {
+      field: 'openai.model',
+      label: 'OpenAI 模型',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入模型名称',
+      },
+    },
+    {
+      field: 'openai.max_tokens',
+      label: 'OpenAI 最大Token数',
+      component: 'InputNumber',
+      componentProps: {
+        min: 1,
+        placeholder: '请输入最大Token数',
+      },
+    },
+    {
+      field: 'openai.temperature',
+      label: 'OpenAI 随机程度',
+      bottomHelpMessage: '0-1，值越大输出越随机',
+      component: 'InputNumber',
+      componentProps: {
+        min: 0,
+        max: 1,
+        step: 0.1,
+        placeholder: '请输入随机程度',
+      },
+    },
+    {
+      field: 'gemini.endpoint',
+      label: 'Gemini 接口地址',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入Gemini接口地址',
+      },
+    },
+    {
+      field: 'gemini.api_key',
+      label: 'Gemini API Key',
+      bottomHelpMessage: '多Key用英文逗号分隔',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入Gemini API Key',
+      },
+    },
+    {
+      field: 'gemini.model',
+      label: 'Gemini 模型',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入模型名称',
+      },
+    },
+    {
+      field: 'gemini.max_tokens',
+      label: 'Gemini 最大Token数',
+      component: 'InputNumber',
+      componentProps: {
+        min: 1,
+        placeholder: '请输入最大Token数',
+      },
+    },
+    {
+      field: 'gemini.temperature',
+      label: 'Gemini 随机程度',
+      bottomHelpMessage: '0-1，值越大输出越随机',
+      component: 'InputNumber',
+      componentProps: {
+        min: 0,
+        max: 1,
+        step: 0.1,
+        placeholder: '请输入随机程度',
+      },
+    },
+    {
+      field: 'private_enable',
+      label: '私聊开关',
+      bottomHelpMessage: '是否启用私聊AIGC',
+      component: 'Switch',
+    },
+    {
+      field: 'group_whitelist',
+      label: '群白名单',
+      bottomHelpMessage: 'AIGC群白名单，可以设置多个',
+      component: 'GTags',
+      componentProps: {
+        placeholder: '请输入群号',
+        allowAdd: true,
+        allowDel: true,
+      },
+    },
+    {
+      field: 'qq_blacklist',
+      label: 'QQ黑名单',
+      bottomHelpMessage: 'AIGC QQ黑名单，可以设置多个',
+      component: 'GTags',
+      componentProps: {
+        placeholder: '请输入QQ号',
+        allowAdd: true,
+        allowDel: true,
+      },
+    },
+    {
+      field: 'prefix_filter',
+      label: '前缀过滤',
+      bottomHelpMessage: '过滤以指定前缀开头的消息',
+      component: 'GTags',
+      componentProps: {
+        placeholder: '请输入前缀',
+        allowAdd: true,
+        allowDel: true,
+      },
+    },
+    {
+      field: 'group_history_count',
+      label: '群聊历史条数',
+      bottomHelpMessage: '群聊记录携带条数，0则不携带',
+      component: 'InputNumber',
+      componentProps: {
+        min: 0,
+        placeholder: '请输入群聊历史条数',
+      },
+    },
+    {
+      field: 'conversation.max_history',
+      label: '对话历史长度',
+      bottomHelpMessage: '对话历史长度，单位为消息轮数',
+      component: 'InputNumber',
+      componentProps: {
+        min: 1,
+        placeholder: '请输入对话历史长度',
+      },
+    },
+  ],
+}
+
+export const milkyConfig = {
+  milky: [
+    {
+      field: 'enable',
+      label: '启用Milky',
+      bottomHelpMessage: '是否启用Milky协议适配器',
+      component: 'Switch',
+    },
+    {
+      field: 'host',
+      label: '服务器地址',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入Milky服务器地址',
+      },
+    },
+    {
+      field: 'port',
+      label: '服务器端口',
+      component: 'InputNumber',
+      componentProps: {
+        min: 1,
+        max: 65535,
+        placeholder: '请输入端口号',
+      },
+    },
+    {
+      field: 'prefix',
+      label: 'URL前缀',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入URL前缀',
+      },
+    },
+    {
+      field: 'access_token',
+      label: '鉴权Token',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入鉴权Token',
+      },
+    },
+    {
+      field: 'connection',
+      label: '连接方式',
+      component: 'Select',
+      componentProps: {
+        options: [
+          {label: 'WebSocket', value: 'ws'},
+          {label: 'Webhook', value: 'webhook'},
+        ],
+        placeholder: '请选择连接方式',
+      },
+    },
+    {
+      field: 'webhook.path',
+      label: 'Webhook路径',
+      bottomHelpMessage: '仅Webhook模式有效',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入Webhook路径',
+      },
+    },
+    {
+      field: 'ws.heartbeat',
+      label: '心跳间隔',
+      bottomHelpMessage: '仅WebSocket模式有效，单位：秒',
+      component: 'InputNumber',
+      componentProps: {
+        min: 1,
+        placeholder: '请输入心跳间隔（秒）',
+      },
+    },
+    {
+      field: 'ws.reconnect_interval',
+      label: '重连间隔',
+      bottomHelpMessage: '仅WebSocket模式有效，单位：秒',
+      component: 'InputNumber',
+      componentProps: {
+        min: 1,
+        placeholder: '请输入重连间隔（秒）',
+      },
+    },
+    {
+      field: 'http_timeout',
+      label: 'HTTP超时',
+      component: 'InputNumber',
+      componentProps: {
+        min: 1,
+        placeholder: '请输入超时时间（秒）',
+      },
+    },
+  ],
+}
+
+export const satoriConfig = {
+  satori: [
+    {
+      field: 'enable',
+      label: '启用Satori',
+      bottomHelpMessage: '是否启用Satori协议适配器',
+      component: 'Switch',
+    },
+    {
+      field: 'http_endpoint',
+      label: 'HTTP终结点',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入HTTP终结点地址',
+      },
+    },
+    {
+      field: 'ws_endpoint',
+      label: 'WebSocket终结点',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入WebSocket终结点地址',
+      },
+    },
+    {
+      field: 'token',
+      label: '访问令牌',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入API访问令牌',
+      },
+    },
+    {
+      field: 'platform',
+      label: '平台名称',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入平台名称',
+      },
+    },
+    {
+      field: 'timeout',
+      label: '超时时间',
+      bottomHelpMessage: '单位：毫秒',
+      component: 'InputNumber',
+      componentProps: {
+        min: 0,
+        placeholder: '请输入超时时间（毫秒）',
+      },
+    },
+    {
+      field: 'heartbeat_interval',
+      label: '心跳间隔',
+      bottomHelpMessage: '单位：毫秒',
+      component: 'InputNumber',
+      componentProps: {
+        min: 0,
+        placeholder: '请输入心跳间隔（毫秒）',
+      },
+    },
+  ],
+}
+
+export const extraTabs = {
+  aigc: {
+    key: 'aigc',
+    title: 'AIGC配置',
+    cards: [
+      {
+        key: 'system.aigc',
+        title: 'AIGC设置',
+        desc: '对AIGC进行相关配置',
+        schemas: aigcConfig.aigc,
+      },
+    ],
+  },
+  milky: {
+    key: 'milky',
+    title: 'Milky配置',
+    cards: [
+      {
+        key: 'system.milky',
+        title: 'Milky协议配置',
+        desc: '对Milky协议适配器进行相关配置',
+        schemas: milkyConfig.milky,
+      },
+    ],
+  },
+  satori: {
+    key: 'satori',
+    title: 'Satori配置',
+    cards: [
+      {
+        key: 'system.satori',
+        title: 'Satori协议配置',
+        desc: '对Satori协议适配器进行相关配置',
+        schemas: satoriConfig.satori,
+      },
+    ],
+  },
+}

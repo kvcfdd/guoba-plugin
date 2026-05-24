@@ -20,7 +20,7 @@ export const isDev = (process.argv || []).includes('dev')
 function checkVersion() {
   let isV2 = false, isV3 = false, isV4 = false, noSupport = false
 
-  let {name, version} = yunzaiPackage ?? {}
+  let { name, version } = yunzaiPackage ?? {}
 
   if (version) {
     if (version.startsWith('2')) {
@@ -34,7 +34,7 @@ function checkVersion() {
     }
   }
 
-  const isTRSS = yunzaiPackage.name === 'trss-yunzai'
+  const isTRSS = yunzaiPackage.name === 'aigc-yunzai'
 
   // v4 need check genshin
   const hasGenshin = fs.existsSync('./plugins/genshin')
