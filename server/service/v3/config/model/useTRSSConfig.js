@@ -574,6 +574,36 @@ export const aigcConfig = {
         placeholder: '请输入对话历史长度',
       },
     },
+    {
+      field: 'show_thinking',
+      label: '显示思维链',
+      bottomHelpMessage: '是否将思维链以合并转发方式单独发送',
+      component: 'Switch',
+    },
+    {
+      field: 'proxy.address',
+      label: '代理地址',
+      bottomHelpMessage: '如 http://127.0.0.1:7890，为空则不启用',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入代理地址',
+      },
+    },
+    {
+      field: 'proxy.enable',
+      label: 'LLM请求走代理',
+      bottomHelpMessage: 'LLM请求是否走代理',
+      component: 'Switch',
+    },
+    {
+      field: 'mcp.servers',
+      label: 'MCP工具服务器',
+      bottomHelpMessage: 'MCP工具服务器配置，JSON数组格式',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入MCP服务器配置',
+      },
+    },
   ],
 }
 

@@ -65,6 +65,34 @@ export const baseConfig = {
       component: 'Switch',
     },
     {
+      field: 'chromium_path',
+      label: 'chromium路径',
+      bottomHelpMessage: 'chromium其他路径，默认无需填写，需要时可填写chromium的可执行文件绝对路径',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入chromium路径',
+      },
+    },
+    {
+      field: 'puppeteer_ws',
+      label: 'puppeteer接口地址',
+      bottomHelpMessage: 'puppeteer接口地址，默认无需填写',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入puppeteer接口地址',
+      },
+    },
+    {
+      field: 'puppeteer_timeout',
+      label: 'puppeteer截图超时时间',
+      bottomHelpMessage: 'puppeteer截图超时时间，默认无需填写',
+      component: 'InputNumber',
+      componentProps: {
+        min: 0,
+        placeholder: '（毫秒）',
+      },
+    },
+    {
       field: 'sign_api_addr',
       label: '签名API地址',
       bottomHelpMessage: '签名API地址(如:http://127.0.0.1:8080/sign?key=114514)',
