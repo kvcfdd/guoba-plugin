@@ -4,7 +4,7 @@ export const addGroupPromptProps = {
   placeholder: '请输入群号',
   okText: '添加',
   rules: [
-    {required: true, message: '群号得填上才行哦~'},
+    { required: true, message: '群号得填上才行哦~' },
     // [{min: 5, message: '真的有这么短的群号吗？'}],
   ],
 }
@@ -15,7 +15,7 @@ export const addUserPromptProps = tip => ({
   placeholder: '请输入账号',
   okText: '添加',
   rules: [
-    {required: true, message: '账号得填上才行哦~'},
+    { required: true, message: '账号得填上才行哦~' },
   ],
 })
 
@@ -207,7 +207,7 @@ export const baseConfig = {
                 component: 'Input',
                 required: true,
                 rules: [
-                  {pattern: '^[^\\s]*$', message: '不能包含空格'},
+                  { pattern: '^[^\\s]*$', message: '不能包含空格' },
                 ],
               },
               {
@@ -286,9 +286,9 @@ export const groupConfig = {
       bottomHelpMessage: '是否只仅关注主动@机器人的消息',
       componentProps: {
         options: [
-          {label: '关闭', value: 0},
-          {label: '开启', value: 1},
-          {label: '开启、主人关闭', value: 2},
+          { label: '关闭', value: 0 },
+          { label: '开启', value: 1 },
+          { label: '开启、主人关闭', value: 2 },
         ],
       },
     },
@@ -309,9 +309,9 @@ export const groupConfig = {
       bottomHelpMessage: '添加消息是否限制权限',
       componentProps: {
         options: [
-          {label: '所有群员都可以添加', value: 0},
-          {label: '群主和管理员才能添加', value: 1},
-          {label: '只有主人才能添加', value: 2},
+          { label: '所有群员都可以添加', value: 0 },
+          { label: '群主和管理员才能添加', value: 1 },
+          { label: '只有主人才能添加', value: 2 },
         ],
       },
     },
@@ -408,8 +408,8 @@ export const aigcConfig = {
       component: 'Select',
       componentProps: {
         options: [
-          {label: 'OpenAI', value: 'openai'},
-          {label: 'Google Gemini', value: 'gemini'},
+          { label: 'OpenAI', value: 'openai' },
+          { label: 'Google Gemini', value: 'gemini' },
         ],
         placeholder: '请选择AI提供商',
       },
@@ -581,6 +581,12 @@ export const aigcConfig = {
       component: 'Switch',
     },
     {
+      field: 'split_reply',
+      label: '分句回复',
+      bottomHelpMessage: '是否允许AI分句回复',
+      component: 'Switch',
+    },
+    {
       field: 'proxy.address',
       label: '代理地址',
       bottomHelpMessage: '如 http://127.0.0.1:7890，为空则不启用',
@@ -655,8 +661,8 @@ export const milkyConfig = {
       component: 'Select',
       componentProps: {
         options: [
-          {label: 'WebSocket', value: 'ws'},
-          {label: 'Webhook', value: 'webhook'},
+          { label: 'WebSocket', value: 'ws' },
+          { label: 'Webhook', value: 'webhook' },
         ],
         placeholder: '请选择连接方式',
       },
