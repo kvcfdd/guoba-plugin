@@ -88,7 +88,6 @@ export const baseConfig = {
       bottomHelpMessage: '在指定的时间更新',
       component: 'EasyCron',
       componentProps: {
-        multiple: true,
         placeholder: '请输入或选择Cron表达式',
       },
     },
@@ -98,7 +97,6 @@ export const baseConfig = {
       bottomHelpMessage: '在指定的时间重启',
       component: 'EasyCron',
       componentProps: {
-        multiple: true,
         placeholder: '请输入或选择Cron表达式',
       },
     },
@@ -108,7 +106,6 @@ export const baseConfig = {
       bottomHelpMessage: '在指定的时间关机',
       component: 'EasyCron',
       componentProps: {
-        multiple: true,
         placeholder: '请输入或选择Cron表达式',
       },
     },
@@ -118,7 +115,6 @@ export const baseConfig = {
       bottomHelpMessage: '在指定的时间开机',
       component: 'EasyCron',
       componentProps: {
-        multiple: true,
         placeholder: '请输入或选择Cron表达式',
       },
     },
@@ -578,6 +574,12 @@ export const aigcConfig = {
       field: 'show_thinking',
       label: '显示思维链',
       bottomHelpMessage: '是否将思维链以合并转发方式单独发送',
+      component: 'Switch',
+    },
+    {
+      field: 'thinking',
+      label: '思考模式',
+      bottomHelpMessage: '启用后模型会在回复前进行内部推理（只控制OpenAI兼容模式且需模型支持）',
       component: 'Switch',
     },
     {
