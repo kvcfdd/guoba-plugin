@@ -589,6 +589,15 @@ export const aigcConfig = {
       component: 'Switch',
     },
     {
+      field: 'bilibili_cookie',
+      label: 'Bilibili Cookie',
+      bottomHelpMessage: 'Bilibili Cookie，用于视频搜索/下载工具',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入Bilibili Cookie',
+      },
+    },
+    {
       field: 'proxy.address',
       label: '代理地址',
       bottomHelpMessage: '如 http://127.0.0.1:7890，为空则不启用',
