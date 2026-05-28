@@ -445,8 +445,8 @@ export const aigcConfig = {
       },
     },
     {
-      field: 'openai.max_tokens',
-      label: 'OpenAI 最大Token数',
+      field: 'max_tokens',
+      label: '最大Token数',
       component: 'InputNumber',
       componentProps: {
         min: 1,
@@ -454,8 +454,8 @@ export const aigcConfig = {
       },
     },
     {
-      field: 'openai.temperature',
-      label: 'OpenAI 随机程度',
+      field: 'temperature',
+      label: '随机程度',
       bottomHelpMessage: '0-1，值越大输出越随机',
       component: 'InputNumber',
       componentProps: {
@@ -463,6 +463,15 @@ export const aigcConfig = {
         max: 1,
         step: 0.1,
         placeholder: '请输入随机程度',
+      },
+    },
+    {
+      field: 'bot_name',
+      label: '机器人名称',
+      bottomHelpMessage: '会拼接至提示词开头和日志中',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入机器人名称',
       },
     },
     {
@@ -488,27 +497,6 @@ export const aigcConfig = {
       component: 'Input',
       componentProps: {
         placeholder: '请输入模型名称',
-      },
-    },
-    {
-      field: 'gemini.max_tokens',
-      label: 'Gemini 最大Token数',
-      component: 'InputNumber',
-      componentProps: {
-        min: 1,
-        placeholder: '请输入最大Token数',
-      },
-    },
-    {
-      field: 'gemini.temperature',
-      label: 'Gemini 随机程度',
-      bottomHelpMessage: '0-1，值越大输出越随机',
-      component: 'InputNumber',
-      componentProps: {
-        min: 0,
-        max: 1,
-        step: 0.1,
-        placeholder: '请输入随机程度',
       },
     },
     {
@@ -561,7 +549,7 @@ export const aigcConfig = {
       },
     },
     {
-      field: 'conversation.max_history',
+      field: 'max_history',
       label: '对话历史长度',
       bottomHelpMessage: '对话历史长度，单位为消息轮数',
       component: 'InputNumber',
