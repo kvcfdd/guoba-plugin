@@ -609,6 +609,56 @@ export const aigcConfig = {
         placeholder: '请输入MCP服务器配置',
       },
     },
+    {
+      field: 'voice.api_key',
+      label: '悟声 API Key',
+      bottomHelpMessage: '悟声 Wusound TTS API Key，在 https://dev.wusound.cn 开发者中心获取',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入悟声 API Key',
+      },
+    },
+    {
+      field: 'voice.voice_id',
+      label: '默认语音角色 UUID',
+      bottomHelpMessage: '悟声默认语音角色 UUID',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入语音角色 UUID',
+      },
+    },
+    {
+      field: 'voice.break_clone',
+      label: '启用情感风格',
+      bottomHelpMessage: '是否启用偏向文本的情感风格',
+      component: 'Switch',
+    },
+    {
+      field: 'voice.preset',
+      label: '参数预设',
+      bottomHelpMessage: 'creative(创意/最佳表现力) | balance(均衡) | stable(稳定)',
+      component: 'Select',
+      componentProps: {
+        options: [
+          { label: '创意 (creative)', value: 'creative' },
+          { label: '均衡 (balance)', value: 'balance' },
+          { label: '稳定 (stable)', value: 'stable' },
+        ],
+        placeholder: '请选择参数预设',
+      },
+    },
+    {
+      field: 'voice.speech_rate',
+      label: '语速',
+      bottomHelpMessage: '语速 0.5-2.0，数值越大越慢',
+      component: 'InputNumber',
+      componentProps: {
+        min: 0.5,
+        max: 2.0,
+        step: 0.1,
+        placeholder: '请输入语速',
+      },
+    },
   ],
 }
 
