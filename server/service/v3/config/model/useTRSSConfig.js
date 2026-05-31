@@ -820,7 +820,113 @@ export const satoriConfig = {
   ],
 }
 
+export const maintConfig = {
+  maint: [
+    {
+      field: 'enable',
+      label: '启用维护任务',
+      bottomHelpMessage: '是否启用定时维护任务',
+      component: 'Switch',
+    },
+    {
+      field: 'cron',
+      label: '定时Cron',
+      bottomHelpMessage: '定时维护任务Cron表达式',
+      component: 'EasyCron',
+      componentProps: {
+        placeholder: '请输入或选择Cron表达式',
+      },
+    },
+    {
+      field: 'git_paths',
+      label: 'Git仓库路径',
+      bottomHelpMessage: '支持相对路径和绝对路径，更新为强制更新，仅用于辅助图像仓库更新',
+      component: 'GTags',
+      componentProps: {
+        placeholder: '请输入Git仓库路径',
+        allowAdd: true,
+        allowDel: true,
+      },
+    },
+    {
+      field: 'clean_paths',
+      label: '清理路径',
+      bottomHelpMessage: '支持相对路径和绝对路径',
+      component: 'GTags',
+      componentProps: {
+        placeholder: '请输入清理路径',
+        allowAdd: true,
+        allowDel: true,
+      },
+    },
+    {
+      field: 'timeout',
+      label: 'Git命令超时',
+      bottomHelpMessage: 'Git命令超时时间（毫秒）',
+      component: 'InputNumber',
+      componentProps: {
+        min: 1,
+        placeholder: '请输入超时时间（毫秒）',
+      },
+    },
+    {
+      field: 'mihomo.enable',
+      label: '启用Mihomo代理',
+      bottomHelpMessage: '是否启用代理订阅为维护（仅支持Linux系统）',
+      component: 'Switch',
+    },
+    {
+      field: 'mihomo.sub_url',
+      label: '代理订阅链接',
+      bottomHelpMessage: 'Mihomo代理订阅链接',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入代理订阅链接',
+      },
+    },
+    {
+      field: 'mihomo.exclude_regex',
+      label: '节点过滤',
+      bottomHelpMessage: '代理节点过滤规则',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入节点过滤正则',
+      },
+    },
+    {
+      field: 'mihomo.config_path',
+      label: '代理配置文件路径',
+      bottomHelpMessage: 'Mihomo代理订阅配置文件路径',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入配置文件路径',
+      },
+    },
+    {
+      field: 'mihomo.service_name',
+      label: 'Systemctl服务名',
+      bottomHelpMessage: 'Mihomo自启动systemctl中的对应名称用于重启',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入服务名称',
+      },
+    },
+  ],
+}
+
 export const extraTabs = {
+  maint: {
+    key: 'maint',
+    title: '维护配置',
+    cards: [
+      {
+        key: 'system.maint',
+        title: '维护任务设置',
+        desc: '对定时维护任务进行相关配置',
+        schemas: maintConfig.maint,
+      },
+    ],
+  },
   aigc: {
     key: 'aigc',
     title: 'AIGC配置',

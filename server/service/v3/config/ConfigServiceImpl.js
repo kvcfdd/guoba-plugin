@@ -47,11 +47,13 @@ export default class ConfigServiceImpl extends IConfigService {
     'system.other',
     'system.group',
     'system.aigc',
+    'system.maint',
   ]
   needHandleFieldKey = [
     'masterQQ', 'disableAdopt', 'whiteGroup', 'blackGroup', 'blackQQ',
     'whiteQQ', 'blackUser', 'whiteUser', 'botAlias', 'enable', 'disable',
     'group_whitelist', 'qq_blacklist', 'prefix_filter',
+    'git_paths', 'clean_paths',
   ]
 
   /**

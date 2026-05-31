@@ -421,6 +421,8 @@ export const configFile = {
   'system.other': '/config/config/other.yaml',
   'system.server': '/config/config/server.yaml',
 
+  'system.maint': '/config/config/maint_task.yaml',
+
   'system.aigc': '/config/config/aigc.yaml',
   'system.milky': '/config/config/milky.yaml',
   'system.satori': '/config/config/satori.yaml',
