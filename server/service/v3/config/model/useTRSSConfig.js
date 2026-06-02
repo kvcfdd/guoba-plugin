@@ -393,7 +393,7 @@ export const aigcConfig = {
   aigc: [
     {
       label: '通用配置',
-      component: 'SOFT_GROUP_BEGIN',
+      component: 'Divider',
     },
     {
       field: 'enable',
@@ -535,7 +535,7 @@ export const aigcConfig = {
     },
     {
       label: 'OpenAI 配置 (兼容接口)',
-      component: 'SOFT_GROUP_BEGIN',
+      component: 'Divider',
     },
     {
       field: 'openai.endpoint',
@@ -573,7 +573,7 @@ export const aigcConfig = {
     },
     {
       label: 'Gemini 配置',
-      component: 'SOFT_GROUP_BEGIN',
+      component: 'Divider',
     },
     {
       field: 'gemini.endpoint',
@@ -617,7 +617,7 @@ export const aigcConfig = {
     },
     {
       label: '代理配置',
-      component: 'SOFT_GROUP_BEGIN',
+      component: 'Divider',
     },
     {
       field: 'proxy.address',
@@ -636,7 +636,7 @@ export const aigcConfig = {
     },
     {
       label: 'MCP 工具服务器',
-      component: 'SOFT_GROUP_BEGIN',
+      component: 'Divider',
     },
     {
       field: 'mcp.servers',
@@ -649,7 +649,7 @@ export const aigcConfig = {
     },
     {
       label: '语音合成（悟声 Wusound TTS）',
-      component: 'SOFT_GROUP_BEGIN',
+      component: 'Divider',
     },
     {
       field: 'voice.api_key',
