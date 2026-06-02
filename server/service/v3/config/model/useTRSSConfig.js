@@ -392,6 +392,10 @@ export const otherConfig = {
 export const aigcConfig = {
   aigc: [
     {
+      label: '通用配置',
+      component: 'SOFT_GROUP_BEGIN',
+    },
+    {
       field: 'enable',
       label: '启用AIGC',
       bottomHelpMessage: '是否启用AIGC功能',
@@ -399,7 +403,7 @@ export const aigcConfig = {
     },
     {
       field: 'provider',
-      label: 'Provider',
+      label: 'AI 提供商',
       bottomHelpMessage: '选择AI提供商',
       component: 'Select',
       componentProps: {
@@ -408,6 +412,15 @@ export const aigcConfig = {
           { label: 'Google Gemini', value: 'gemini' },
         ],
         placeholder: '请选择AI提供商',
+      },
+    },
+    {
+      field: 'bot_name',
+      label: '机器人名称',
+      bottomHelpMessage: '会拼接至提示词开头和日志中',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入机器人名称',
       },
     },
     {
@@ -420,33 +433,8 @@ export const aigcConfig = {
       },
     },
     {
-      field: 'openai.endpoint',
-      label: 'OpenAI 接口地址',
-      component: 'Input',
-      componentProps: {
-        placeholder: '请输入OpenAI接口地址',
-      },
-    },
-    {
-      field: 'openai.api_key',
-      label: 'OpenAI API Key',
-      bottomHelpMessage: '多Key用英文逗号分隔',
-      component: 'Input',
-      componentProps: {
-        placeholder: '请输入OpenAI API Key',
-      },
-    },
-    {
-      field: 'openai.model',
-      label: 'OpenAI 模型',
-      component: 'Input',
-      componentProps: {
-        placeholder: '请输入模型名称',
-      },
-    },
-    {
       field: 'max_tokens',
-      label: '最大Token数',
+      label: '输出最大Token数',
       component: 'InputNumber',
       componentProps: {
         min: 1,
@@ -463,40 +451,6 @@ export const aigcConfig = {
         max: 1,
         step: 0.1,
         placeholder: '请输入随机程度',
-      },
-    },
-    {
-      field: 'bot_name',
-      label: '机器人名称',
-      bottomHelpMessage: '会拼接至提示词开头和日志中',
-      component: 'Input',
-      componentProps: {
-        placeholder: '请输入机器人名称',
-      },
-    },
-    {
-      field: 'gemini.endpoint',
-      label: 'Gemini 接口地址',
-      component: 'Input',
-      componentProps: {
-        placeholder: '请输入Gemini接口地址',
-      },
-    },
-    {
-      field: 'gemini.api_key',
-      label: 'Gemini API Key',
-      bottomHelpMessage: '多Key用英文逗号分隔',
-      component: 'Input',
-      componentProps: {
-        placeholder: '请输入Gemini API Key',
-      },
-    },
-    {
-      field: 'gemini.model',
-      label: 'Gemini 模型',
-      component: 'Input',
-      componentProps: {
-        placeholder: '请输入模型名称',
       },
     },
     {
@@ -565,15 +519,9 @@ export const aigcConfig = {
       component: 'Switch',
     },
     {
-      field: 'thinking',
-      label: '思考模式',
-      bottomHelpMessage: '启用后模型会在回复前进行内部推理（只控制OpenAI兼容模式且需模型支持）',
-      component: 'Switch',
-    },
-    {
       field: 'split_reply',
-      label: '分句回复',
-      bottomHelpMessage: '是否允许AI分句回复',
+      label: '分条回复',
+      bottomHelpMessage: '是否允许AI分条回复',
       component: 'Switch',
     },
     {
@@ -584,6 +532,92 @@ export const aigcConfig = {
       componentProps: {
         placeholder: '请输入Bilibili Cookie',
       },
+    },
+    {
+      label: 'OpenAI 配置 (兼容接口)',
+      component: 'SOFT_GROUP_BEGIN',
+    },
+    {
+      field: 'openai.endpoint',
+      label: '接口地址',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入OpenAI接口地址',
+      },
+    },
+    {
+      field: 'openai.api_key',
+      label: 'API Key',
+      bottomHelpMessage: '多Key用英文逗号分隔',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入OpenAI API Key',
+      },
+    },
+    {
+      field: 'openai.model',
+      label: '模型',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入模型名称',
+      },
+    },
+    {
+      field: 'openai.thinking_effort',
+      label: '思考等级',
+      bottomHelpMessage: '留空=关闭思考，按提供商要求填写',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入思考等级',
+      },
+    },
+    {
+      label: 'Gemini 配置',
+      component: 'SOFT_GROUP_BEGIN',
+    },
+    {
+      field: 'gemini.endpoint',
+      label: '接口地址',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入Gemini接口地址',
+      },
+    },
+    {
+      field: 'gemini.api_key',
+      label: 'API Key',
+      bottomHelpMessage: '多Key用英文逗号分隔',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入Gemini API Key',
+      },
+    },
+    {
+      field: 'gemini.model',
+      label: '模型',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入模型名称',
+      },
+    },
+    {
+      field: 'gemini.thinking_level',
+      label: '思考等级',
+      bottomHelpMessage: '思考等级: minimal, low, medium, high',
+      component: 'Select',
+      componentProps: {
+        options: [
+          { label: 'minimal', value: 'minimal' },
+          { label: 'low', value: 'low' },
+          { label: 'medium', value: 'medium' },
+          { label: 'high', value: 'high' },
+        ],
+        placeholder: '请选择思考等级',
+      },
+    },
+    {
+      label: '代理配置',
+      component: 'SOFT_GROUP_BEGIN',
     },
     {
       field: 'proxy.address',
@@ -601,6 +635,10 @@ export const aigcConfig = {
       component: 'Switch',
     },
     {
+      label: 'MCP 工具服务器',
+      component: 'SOFT_GROUP_BEGIN',
+    },
+    {
       field: 'mcp.servers',
       label: 'MCP工具服务器',
       bottomHelpMessage: 'MCP工具服务器配置，JSON数组格式',
@@ -608,6 +646,10 @@ export const aigcConfig = {
       componentProps: {
         placeholder: '请输入MCP服务器配置',
       },
+    },
+    {
+      label: '语音合成（悟声 Wusound TTS）',
+      component: 'SOFT_GROUP_BEGIN',
     },
     {
       field: 'voice.api_key',
