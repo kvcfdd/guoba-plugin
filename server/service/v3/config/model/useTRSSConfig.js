@@ -298,49 +298,6 @@ export const groupConfig = {
         allowDel: true,
       },
     },
-    {
-      field: 'addLimit',
-      label: '添加消息权限',
-      component: 'RadioGroup',
-      bottomHelpMessage: '添加消息是否限制权限',
-      componentProps: {
-        options: [
-          { label: '所有群员都可以添加', value: 0 },
-          { label: '群主和管理员才能添加', value: 1 },
-          { label: '只有主人才能添加', value: 2 },
-        ],
-      },
-    },
-    {
-      field: 'addReply',
-      label: '回复消息',
-      component: 'Switch',
-      bottomHelpMessage: '是否回复触发消息',
-      componentProps: {
-        checkedValue: 1,
-        unCheckedValue: 0,
-      },
-    },
-    {
-      field: 'addAt',
-      label: '提及用户',
-      component: 'Switch',
-      bottomHelpMessage: '是否提及触发用户',
-      componentProps: {
-        checkedValue: 1,
-        unCheckedValue: 0,
-      },
-    },
-    {
-      field: 'addRecall',
-      label: '撤回消息',
-      bottomHelpMessage: '是否撤回回复消息',
-      component: 'InputNumber',
-      componentProps: {
-        min: 0,
-        placeholder: '请输入撤回消息时间（秒）',
-      },
-    }
   ],
 }
 
@@ -415,21 +372,116 @@ export const aigcConfig = {
       },
     },
     {
-      field: 'bot_name',
+      field: 'system_prompt.bot_name',
       label: '机器人名称',
-      bottomHelpMessage: '会拼接至提示词开头和日志中',
+      bottomHelpMessage: '会拼接至提示词和日志中',
       component: 'Input',
       componentProps: {
         placeholder: '请输入机器人名称',
       },
     },
     {
-      field: 'system_prompt',
-      label: '系统提示词',
-      bottomHelpMessage: 'AI的系统提示词',
+      field: 'system_prompt.bot_gender',
+      label: '性别',
       component: 'Input',
       componentProps: {
-        placeholder: '请输入系统提示词',
+        placeholder: '请输入性别',
+      },
+    },
+    {
+      field: 'system_prompt.bot_age',
+      label: '年龄',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入年龄',
+      },
+    },
+    {
+      field: 'system_prompt.bot_personality',
+      label: '性格',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入性格描述',
+      },
+    },
+    {
+      field: 'system_prompt.bot_appearance',
+      label: '外貌',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入外貌描述',
+      },
+    },
+    {
+      field: 'system_prompt.bot_likes',
+      label: '喜好',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入喜好',
+      },
+    },
+    {
+      field: 'system_prompt.bot_dislikes',
+      label: '讨厌',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入讨厌的事物',
+      },
+    },
+    {
+      field: 'system_prompt.bot_tone',
+      label: '说话语气 / 风格',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入说话语气或风格',
+      },
+    },
+    {
+      field: 'system_prompt.bot_background',
+      label: '背景故事',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入背景故事',
+      },
+    },
+    {
+      field: 'system_prompt.custom',
+      label: '自定义属性',
+      bottomHelpMessage: 'key: value 键值对，仅字符串值生效',
+      component: 'GSubForm',
+      componentProps: {
+        multiple: true,
+        modalProps: {
+          title: '自定义角色属性',
+        },
+        schemas: [
+          {
+            field: 'key',
+            label: '属性名',
+            component: 'Input',
+            required: true,
+            rules: [
+              { pattern: '^[^\\s]*$', message: '不能包含空格' },
+            ],
+          },
+          {
+            field: 'value',
+            label: '属性值',
+            component: 'Input',
+            required: true,
+          },
+        ],
+      },
+    },
+    {
+      field: 'system_prompt.supplement',
+      label: '补充要求',
+      bottomHelpMessage: '额外的补充要求，可以设置多条',
+      component: 'GTags',
+      componentProps: {
+        placeholder: '请输入补充要求',
+        allowAdd: true,
+        allowDel: true,
       },
     },
     {
@@ -463,11 +515,9 @@ export const aigcConfig = {
       field: 'group_whitelist',
       label: '群白名单',
       bottomHelpMessage: 'AIGC群白名单，可以设置多个',
-      component: 'GTags',
+      component: 'GSelectGroup',
       componentProps: {
-        placeholder: '请输入群号',
-        allowAdd: true,
-        allowDel: true,
+        placeholder: '请选择群白名单',
       },
     },
     {
@@ -616,6 +666,15 @@ export const aigcConfig = {
       },
     },
     {
+      field: 'gemini.embedding_model',
+      label: 'Embedding 模型',
+      bottomHelpMessage: '用于知识库向量化',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入 Embedding 模型名称',
+      },
+    },
+    {
       label: '代理配置',
       component: 'Divider',
     },
@@ -642,9 +701,10 @@ export const aigcConfig = {
       field: 'mcp.servers',
       label: 'MCP工具服务器',
       bottomHelpMessage: 'MCP工具服务器配置，JSON数组格式',
-      component: 'Input',
+      component: 'InputTextArea',
       componentProps: {
         placeholder: '请输入MCP服务器配置',
+        rows: 6,
       },
     },
     {

@@ -1,21 +1,40 @@
-import {YamlReader} from "#guoba.framework"
+import { YamlReader } from "#guoba.framework"
 
 export function handleConfigData(action, key, field, value) {
 
-  // 特殊处理 auth
+  // auth：需要强制覆盖旧数据格式，使用 CONFIG_FORCE_OVERLAY_KEY
   if (key === 'system.server' && field === 'auth') {
-    let handleRes = handleAuth(action, field, value)
+    let handleRes = handleMapField(action, field, value, true)
     field = handleRes.field
     value = handleRes.value
   }
 
-  return {field, value};
+  // system_prompt.custom：GSubForm → YAML map 互转
+  if (key === 'system.aigc' && field === 'system_prompt.custom') {
+    let handleRes = handleMapField(action, field, value, false)
+    field = handleRes.field
+    value = handleRes.value
+  }
+
+  // GET: 顶层 system_prompt 对象中的 custom map 需转为 GSubForm 数组
+  if (action === 'get' && key === 'system.aigc' && field === 'system_prompt') {
+    if (value && value.custom instanceof Object && !Array.isArray(value.custom)) {
+      value = {
+        ...value,
+        custom: Object.entries(value.custom).map(([k, v]) => ({ key: k, value: v }))
+      }
+    } else if (value && !value.custom) {
+      value = { ...value, custom: [] }
+    }
+  }
+
+  return { field, value };
 }
 
-function handleAuth(action, field, value) {
+function handleMapField(action, field, value, forceOverlay) {
   if (action === 'get') {
     if (!value) {
-      return {field, value: []}
+      return { field, value: [] }
     }
     if (value instanceof Object) {
       return {
@@ -28,12 +47,11 @@ function handleAuth(action, field, value) {
         })
       }
     }
-    return {field, value: []}
+    return { field, value: [] }
   } else {
-    // 强制覆盖旧数据
-    field = YamlReader.CONFIG_FORCE_OVERLAY_KEY + field
-    if (!value) {
-      return {field, value: null}
+    // auth 需要强制覆盖旧数据格式
+    if (forceOverlay) {
+      field = YamlReader.CONFIG_FORCE_OVERLAY_KEY + field
     }
     if (Array.isArray(value) && value.length > 0) {
       return {
@@ -44,7 +62,8 @@ function handleAuth(action, field, value) {
         }, {})
       }
     }
-    return {field, value: null}
+    // 空值写入 {} 而非 null，保持 YAML map 结构
+    return { field, value: {} }
   }
 }
 

@@ -152,16 +152,6 @@ const groupConfig = () => {
         schemas: [
           ...(CfgAdapter['groupConfig'].group ?? []),
           {
-            field: 'addPrivate',
-            label: '私聊添加',
-            component: 'Switch',
-            bottomHelpMessage: '是否允许私聊添加',
-            componentProps: {
-              checkedValue: 1,
-              unCheckedValue: 0,
-            },
-          },
-          {
             field: 'enable',
             label: '功能白名单',
             component: funComponent,
@@ -218,25 +208,6 @@ const genshinConfig = {
           componentProps: {},
         },
         {
-          field: 'isAutoSign',
-          label: '开启自动签到',
-          component: 'Switch',
-          bottomHelpMessage: '是否开启米游社原神自动签到',
-          componentProps: {
-            checkedValue: 1,
-            unCheckedValue: 0,
-          },
-        },
-        {
-          field: 'signTime',
-          label: '签到定时任务',
-          component: 'EasyCron',
-          bottomHelpMessage: '米游社原神签到定时任务，Cron表达式，默认00:02开始执行，每10s签到一个',
-          componentProps: {
-            placeholder: '请输入或选择Cron表达式',
-          },
-        },
-        {
           field: 'abbrSetAuth',
           label: '别名权限',
           component: 'RadioGroup',
@@ -255,7 +226,6 @@ const genshinConfig = {
       key: 'genshin.mys.pubCk',
       title: '公共Cookie',
       desc: '米游社公共查询cookie，允许添加多个',
-      // 数组form
       type: 'arrayFormCard',
       allowAdd: true,
       allowDel: true,
@@ -348,13 +318,11 @@ const otherConfig = {
         {
           field: 'autoGroup',
           label: '添加群聊',
-          bottomHelpMessage: '是否自动同意群邀请，0-仅主人，1-所有人',
-          component: 'RadioGroup',
+          bottomHelpMessage: '是否自动同意群邀请，关闭=仅主人，开启=所有人',
+          component: 'Switch',
           componentProps: {
-            options: [
-              {label: '仅主人', value: 0},
-              {label: '所有人', value: 1},
-            ],
+            checkedValue: 1,
+            unCheckedValue: 0,
           },
         },
         {
