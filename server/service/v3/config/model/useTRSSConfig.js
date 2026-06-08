@@ -469,6 +469,12 @@ export const aigcConfig = {
       },
     },
     {
+      field: 'strip_reasoning',
+      label: '兼容模式',
+      bottomHelpMessage: '没出问题就勿动',
+      component: 'Switch',
+    },
+    {
       field: 'show_thinking',
       label: '显示思维链',
       bottomHelpMessage: '是否将思维链以合并转发方式单独发送',
