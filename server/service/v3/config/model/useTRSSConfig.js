@@ -387,7 +387,7 @@ export const aigcConfig = {
       component: 'InputTextArea',
       componentProps: {
         placeholder: '请输入系统提示词',
-        rows: 4,
+        rows: 10,
       },
     },
     {
@@ -616,7 +616,7 @@ export const aigcConfig = {
       component: 'InputTextArea',
       componentProps: {
         placeholder: '请输入MCP服务器配置',
-        rows: 6,
+        rows: 12,
       },
     },
     {
