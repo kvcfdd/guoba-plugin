@@ -412,6 +412,28 @@ export const aigcConfig = {
       },
     },
     {
+      field: 'max_tool_rounds',
+      label: '工具调用轮次上限',
+      bottomHelpMessage: '工具调用轮次上限 (2-10)',
+      component: 'InputNumber',
+      componentProps: {
+        min: 2,
+        max: 10,
+        placeholder: '请输入工具调用轮次上限',
+      },
+    },
+    {
+      field: 'retry_count',
+      label: '请求失败重试次数',
+      bottomHelpMessage: '请求失败重试次数 (0-5，0不重试)',
+      component: 'InputNumber',
+      componentProps: {
+        min: 0,
+        max: 5,
+        placeholder: '请输入重试次数',
+      },
+    },
+    {
       field: 'private_enable',
       label: '私聊开关',
       bottomHelpMessage: '是否启用私聊AIGC',
@@ -493,6 +515,59 @@ export const aigcConfig = {
       component: 'Input',
       componentProps: {
         placeholder: '请输入Bilibili Cookie',
+      },
+    },
+    {
+      label: '主动插话模式',
+      component: 'Divider',
+    },
+    {
+      field: 'ambient.enable',
+      label: '启用主动插话',
+      bottomHelpMessage: '是否启用主动插话模式',
+      component: 'Switch',
+    },
+    {
+      field: 'ambient.cooldown_min',
+      label: '最小冷却时间',
+      bottomHelpMessage: '每个群随机冷却时间最小值，单位分',
+      component: 'InputNumber',
+      componentProps: {
+        min: 0,
+        placeholder: '请输入最小冷却时间',
+      },
+    },
+    {
+      field: 'ambient.cooldown_max',
+      label: '最大冷却时间',
+      bottomHelpMessage: '每个群随机冷却时间最大值，单位分',
+      component: 'InputNumber',
+      componentProps: {
+        min: 0,
+        placeholder: '请输入最大冷却时间',
+      },
+    },
+    {
+      field: 'ambient.provider',
+      label: '分流 Provider',
+      bottomHelpMessage: '留空走全局，可选 openai | gemini',
+      component: 'Select',
+      componentProps: {
+        options: [
+          { label: '全局', value: '' },
+          { label: 'OpenAI', value: 'openai' },
+          { label: 'Gemini', value: 'gemini' },
+        ],
+        placeholder: '请选择分流提供商',
+      },
+    },
+    {
+      field: 'ambient.model',
+      label: '分流模型',
+      bottomHelpMessage: '分流模型名称，留空走全局',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入分流模型名称',
       },
     },
     {
