@@ -687,11 +687,75 @@ export const aigcConfig = {
     {
       field: 'mcp.servers',
       label: 'MCP工具服务器',
-      bottomHelpMessage: 'MCP工具服务器配置，JSON数组格式',
-      component: 'InputTextArea',
+      bottomHelpMessage: 'MCP工具服务器配置，支持 Streamable HTTP 和 stdio 传输',
+      component: 'GSubForm',
       componentProps: {
-        placeholder: '请输入MCP服务器配置',
-        rows: 12,
+        multiple: true,
+        modalProps: {
+          title: 'MCP服务器配置',
+        },
+        schemas: [
+          {
+            field: 'name',
+            label: '名称',
+            component: 'Input',
+            required: true,
+            componentProps: { placeholder: '服务器名称' },
+          },
+          {
+            field: 'transport',
+            label: '传输方式',
+            component: 'Select',
+            required: true,
+            componentProps: {
+              options: [
+                { label: 'HTTP', value: 'http' },
+                { label: 'stdio', value: 'stdio' },
+              ],
+              placeholder: '请选择传输方式',
+            },
+          },
+          {
+            field: 'url',
+            label: 'URL',
+            bottomHelpMessage: 'HTTP 传输时填写',
+            component: 'Input',
+            componentProps: { placeholder: 'http://localhost:3000/mcp' },
+          },
+          {
+            field: 'api_key',
+            label: 'API Key',
+            bottomHelpMessage: 'HTTP 鉴权（可选）',
+            component: 'Input',
+            componentProps: { placeholder: 'API Key' },
+          },
+          {
+            field: 'command',
+            label: '命令',
+            bottomHelpMessage: 'stdio 传输时填写',
+            component: 'Input',
+            componentProps: { placeholder: 'npx' },
+          },
+          {
+            field: 'args',
+            label: '命令参数',
+            bottomHelpMessage: 'stdio 传输时填写，每个参数一项',
+            component: 'GTags',
+            componentProps: {
+              placeholder: '请输入参数值',
+              allowAdd: true,
+            },
+          },
+          {
+            field: 'timeout_ms',
+            label: '超时(毫秒)',
+            component: 'InputNumber',
+            componentProps: {
+              min: 1000,
+              placeholder: '30000',
+            },
+          },
+        ],
       },
     },
     {

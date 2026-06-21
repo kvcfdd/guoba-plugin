@@ -1,5 +1,5 @@
 import fs from 'fs'
-import YAML, { YAMLMap } from 'yaml'
+import YAML, { Scalar, YAMLMap } from 'yaml'
 import lodash from 'lodash'
 import chokidar from 'chokidar'
 
@@ -57,7 +57,13 @@ export default class YamlReader {
   }
 
   set(keyPath, value) {
-    this.document.setIn(keyPath.split('.'), value)
+    if (typeof value === 'string' && value.includes('\n')) {
+      const scalar = new Scalar(value)
+      scalar.format = 'LITERAL'
+      this.document.setIn(keyPath.split('.'), scalar)
+    } else {
+      this.document.setIn(keyPath.split('.'), value)
+    }
     this.save()
   }
 
@@ -104,7 +110,13 @@ export default class YamlReader {
       }
     } else {
       parentKeys = this.mapParentKeys(parentKeys)
-      this.document.setIn(parentKeys, data)
+      if (typeof data === 'string' && data.includes('\n')) {
+        const scalar = new Scalar(data)
+        scalar.format = 'LITERAL'
+        this.document.setIn(parentKeys, scalar)
+      } else {
+        this.document.setIn(parentKeys, data)
+      }
     }
   }
 
