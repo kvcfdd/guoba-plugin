@@ -518,13 +518,13 @@ export const aigcConfig = {
       },
     },
     {
-      label: '主动插话模式',
+      label: '水群模式',
       component: 'Divider',
     },
     {
       field: 'ambient.enable',
-      label: '启用主动插话',
-      bottomHelpMessage: '是否启用主动插话模式',
+      label: '启用水群模式',
+      bottomHelpMessage: '是否启用水群模式',
       component: 'Switch',
     },
     {
@@ -754,6 +754,13 @@ export const aigcConfig = {
               min: 1000,
               placeholder: '30000',
             },
+          },
+          {
+            field: 'protocol_version',
+            label: '协议版本',
+            bottomHelpMessage: 'MCP 协议版本（可选）',
+            component: 'Input',
+            componentProps: { placeholder: '请输入协议版本' },
           },
         ],
       },
