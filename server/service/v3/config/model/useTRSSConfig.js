@@ -653,15 +653,6 @@ export const aigcConfig = {
       },
     },
     {
-      field: 'gemini.embedding_model',
-      label: 'Embedding 模型',
-      bottomHelpMessage: '用于知识库向量化',
-      component: 'Input',
-      componentProps: {
-        placeholder: '请输入 Embedding 模型名称',
-      },
-    },
-    {
       label: '代理配置',
       component: 'Divider',
     },
