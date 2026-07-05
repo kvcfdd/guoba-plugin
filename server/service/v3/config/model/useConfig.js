@@ -326,6 +326,26 @@ const otherConfig = {
           },
         },
         {
+          field: 'noticeFriend',
+          label: '添加好友通知',
+          bottomHelpMessage: '是否通知主人有新的好友请求',
+          component: 'Switch',
+          componentProps: {
+            checkedValue: 1,
+            unCheckedValue: 0,
+          },
+        },
+        {
+          field: 'noticeGroup',
+          label: '添加群聊通知',
+          bottomHelpMessage: '是否通知主人有新的群聊邀请',
+          component: 'Switch',
+          componentProps: {
+            checkedValue: 1,
+            unCheckedValue: 0,
+          },
+        },
+        {
           field: 'autoQuit',
           label: '退群人数',
           bottomHelpMessage: '被好友拉进群时，群人数小于配置值自动退出，设为0表示不处理',
