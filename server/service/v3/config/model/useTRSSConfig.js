@@ -481,16 +481,6 @@ export const aigcConfig = {
       },
     },
     {
-      field: 'max_history',
-      label: '对话历史长度',
-      bottomHelpMessage: '对话历史长度，单位为消息轮数',
-      component: 'InputNumber',
-      componentProps: {
-        min: 1,
-        placeholder: '请输入对话历史长度',
-      },
-    },
-    {
       field: 'strip_reasoning',
       label: '兼容模式',
       bottomHelpMessage: '没出问题就勿动',
