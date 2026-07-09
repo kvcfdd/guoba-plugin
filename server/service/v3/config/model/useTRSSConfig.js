@@ -425,11 +425,11 @@ export const aigcConfig = {
     {
       field: 'retry_count',
       label: '请求失败重试次数',
-      bottomHelpMessage: '请求失败重试次数 (0-5，0不重试)',
+      bottomHelpMessage: '请求失败重试次数 (0-10，0不重试)',
       component: 'InputNumber',
       componentProps: {
         min: 0,
-        max: 5,
+        max: 10,
         placeholder: '请输入重试次数',
       },
     },
