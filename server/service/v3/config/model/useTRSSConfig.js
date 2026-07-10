@@ -359,19 +359,6 @@ export const aigcConfig = {
       component: 'Switch',
     },
     {
-      field: 'provider',
-      label: 'AI 提供商',
-      bottomHelpMessage: '选择AI提供商',
-      component: 'Select',
-      componentProps: {
-        options: [
-          { label: 'OpenAI', value: 'openai' },
-          { label: 'Google Gemini', value: 'gemini' },
-        ],
-        placeholder: '请选择AI提供商',
-      },
-    },
-    {
       field: 'bot_name',
       label: '机器人名称',
       bottomHelpMessage: 'AIGC相关日志显示',
@@ -402,11 +389,11 @@ export const aigcConfig = {
     {
       field: 'temperature',
       label: '随机程度',
-      bottomHelpMessage: '0-1，值越大输出越随机',
+      bottomHelpMessage: '0-2，值越大输出越随机',
       component: 'InputNumber',
       componentProps: {
         min: 0,
-        max: 1,
+        max: 2,
         step: 0.1,
         placeholder: '请输入随机程度',
       },
@@ -481,12 +468,6 @@ export const aigcConfig = {
       },
     },
     {
-      field: 'strip_reasoning',
-      label: '兼容模式',
-      bottomHelpMessage: '没出问题就勿动',
-      component: 'Switch',
-    },
-    {
       field: 'show_thinking',
       label: '显示思维链',
       bottomHelpMessage: '是否将思维链以合并转发方式单独发送',
@@ -538,64 +519,12 @@ export const aigcConfig = {
       },
     },
     {
-      field: 'ambient.provider',
-      label: '分流 Provider',
-      bottomHelpMessage: '留空走全局，可选 openai | gemini',
-      component: 'Select',
-      componentProps: {
-        options: [
-          { label: '全局', value: '' },
-          { label: 'OpenAI', value: 'openai' },
-          { label: 'Gemini', value: 'gemini' },
-        ],
-        placeholder: '请选择分流提供商',
-      },
-    },
-    {
       field: 'ambient.model',
       label: '分流模型',
       bottomHelpMessage: '分流模型名称，留空走全局',
       component: 'Input',
       componentProps: {
         placeholder: '请输入分流模型名称',
-      },
-    },
-    {
-      label: 'OpenAI 配置 (兼容接口)',
-      component: 'Divider',
-    },
-    {
-      field: 'openai.endpoint',
-      label: '接口地址',
-      component: 'Input',
-      componentProps: {
-        placeholder: '请输入OpenAI接口地址',
-      },
-    },
-    {
-      field: 'openai.api_key',
-      label: 'API Key',
-      bottomHelpMessage: '多Key用英文逗号分隔',
-      component: 'Input',
-      componentProps: {
-        placeholder: '请输入OpenAI API Key',
-      },
-    },
-    {
-      field: 'openai.model',
-      label: '模型',
-      component: 'Input',
-      componentProps: {
-        placeholder: '请输入模型名称',
-      },
-    },
-    {
-      field: 'openai.thinking_effort',
-      label: '思考等级',
-      bottomHelpMessage: '留空=关闭思考，按提供商要求填写',
-      component: 'Input',
-      componentProps: {
-        placeholder: '请输入思考等级',
       },
     },
     {
