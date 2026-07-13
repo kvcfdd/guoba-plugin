@@ -474,12 +474,6 @@ export const aigcConfig = {
       component: 'Switch',
     },
     {
-      field: 'split_reply',
-      label: '分条回复',
-      bottomHelpMessage: '是否允许AI分条回复',
-      component: 'Switch',
-    },
-    {
       field: 'bilibili_cookie',
       label: 'Bilibili Cookie',
       bottomHelpMessage: 'Bilibili Cookie，用于视频搜索/下载工具',
@@ -555,6 +549,12 @@ export const aigcConfig = {
       componentProps: {
         placeholder: '请输入模型名称',
       },
+    },
+    {
+      field: 'gemini.stateful',
+      label: '有状态模式',
+      bottomHelpMessage: '有状态模式：服务端管理上下文，无需客户端轮询 Key（仅用第一个 Key）',
+      component: 'Switch',
     },
     {
       field: 'gemini.thinking_level',
