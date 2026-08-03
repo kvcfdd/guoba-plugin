@@ -544,7 +544,15 @@ export const aigcConfig = {
     },
     {
       field: 'gemini.model',
-      label: '模型',
+      label: '主模型',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入模型名称',
+      },
+    },
+    {
+      field: 'gemini.secondary_model',
+      label: '辅助模型',
       component: 'Input',
       componentProps: {
         placeholder: '请输入模型名称',
