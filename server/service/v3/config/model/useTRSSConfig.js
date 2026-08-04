@@ -551,14 +551,6 @@ export const aigcConfig = {
       },
     },
     {
-      field: 'gemini.secondary_model',
-      label: '辅助模型',
-      component: 'Input',
-      componentProps: {
-        placeholder: '请输入模型名称',
-      },
-    },
-    {
       field: 'gemini.stateful',
       label: '有状态模式',
       bottomHelpMessage: '有状态模式：服务端管理上下文，无需客户端轮询 Key（仅用第一个 Key）',
@@ -577,6 +569,151 @@ export const aigcConfig = {
           { label: 'high', value: 'high' },
         ],
         placeholder: '请选择思考等级',
+      },
+    },
+    {
+      label: 'Agent 任务执行配置',
+      component: 'Divider',
+    },
+    {
+      field: 'agent.model',
+      label: 'Agent 模型',
+      bottomHelpMessage: 'Agent 专用模型，留空走主模型',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入 Agent 模型名称',
+      },
+    },
+    {
+      field: 'agent.max_tokens',
+      label: 'Agent 最大Token',
+      bottomHelpMessage: 'Agent 输出最大 token 数',
+      component: 'InputNumber',
+      componentProps: {
+        min: 1,
+        placeholder: '请输入最大 Token 数',
+      },
+    },
+    {
+      field: 'agent.max_rounds',
+      label: 'Agent 最大轮次',
+      bottomHelpMessage: 'Agent 思考最大轮次',
+      component: 'InputNumber',
+      componentProps: {
+        min: 2,
+        max: 50,
+        placeholder: '请输入最大轮次',
+      },
+    },
+    {
+      field: 'agent.workspace_ttl',
+      label: '工作区过期时间',
+      bottomHelpMessage: '工作区文件过期时间(秒)，0 不自动清理',
+      component: 'InputNumber',
+      componentProps: {
+        min: 0,
+        placeholder: '请输入过期时间',
+      },
+    },
+    {
+      field: 'agent.workspace_max_file_mb',
+      label: '单文件上限(MB)',
+      bottomHelpMessage: '工作区单文件大小上限',
+      component: 'InputNumber',
+      componentProps: {
+        min: 1,
+        placeholder: '请输入单文件上限',
+      },
+    },
+    {
+      field: 'agent.workspace_max_total_mb',
+      label: '总大小上限(MB)',
+      bottomHelpMessage: '工作区总大小上限',
+      component: 'InputNumber',
+      componentProps: {
+        min: 1,
+        placeholder: '请输入总大小上限',
+      },
+    },
+    {
+      field: 'agent.mcp.servers',
+      label: 'Agent MCP 服务器',
+      bottomHelpMessage: 'Agent 专用 MCP 工具服务器配置',
+      component: 'GSubForm',
+      componentProps: {
+        multiple: true,
+        modalProps: {
+          title: 'Agent MCP 服务器配置',
+        },
+        schemas: [
+          {
+            field: 'name',
+            label: '名称',
+            component: 'Input',
+            required: true,
+            componentProps: { placeholder: '服务器名称' },
+          },
+          {
+            field: 'transport',
+            label: '传输方式',
+            component: 'Select',
+            required: true,
+            componentProps: {
+              options: [
+                { label: 'HTTP', value: 'http' },
+                { label: 'stdio', value: 'stdio' },
+              ],
+              placeholder: '请选择传输方式',
+            },
+          },
+          {
+            field: 'url',
+            label: 'URL',
+            bottomHelpMessage: 'HTTP 传输时填写',
+            component: 'Input',
+            componentProps: { placeholder: 'http://localhost:3100/mcp' },
+          },
+          {
+            field: 'api_key',
+            label: 'API Key',
+            bottomHelpMessage: 'HTTP 鉴权（可选）',
+            component: 'Input',
+            componentProps: { placeholder: 'API Key' },
+          },
+          {
+            field: 'command',
+            label: '命令',
+            bottomHelpMessage: 'stdio 传输时填写',
+            component: 'Input',
+            componentProps: { placeholder: 'npx' },
+          },
+          {
+            field: 'args',
+            label: '命令参数',
+            bottomHelpMessage: 'stdio 传输时填写',
+            component: 'GTags',
+            componentProps: {
+              placeholder: '请输入参数值',
+              allowAdd: true,
+            },
+          },
+          {
+            field: 'timeout_ms',
+            label: '超时(毫秒)',
+            component: 'InputNumber',
+            componentProps: {
+              min: 1000,
+              placeholder: '30000',
+            },
+          },
+          {
+            field: 'protocol_version',
+            label: '协议版本',
+            bottomHelpMessage: 'MCP 协议版本（可选）',
+            component: 'Input',
+            componentProps: { placeholder: '请输入协议版本' },
+          },
+        ],
       },
     },
     {
