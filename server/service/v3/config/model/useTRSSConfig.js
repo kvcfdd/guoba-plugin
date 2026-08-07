@@ -576,6 +576,18 @@ export const aigcConfig = {
       component: 'Divider',
     },
     {
+      field: 'agent.enable',
+      label: '启用Agent子系统',
+      bottomHelpMessage: '总开关：关闭时主模型无法派发 Agent 任务',
+      component: 'Switch',
+    },
+    {
+      field: 'agent.master_only',
+      label: '仅主人可用',
+      bottomHelpMessage: '仅主人可使用 Agent 子系统，false 则所有用户可用',
+      component: 'Switch',
+    },
+    {
       field: 'agent.model',
       label: 'Agent 模型',
       bottomHelpMessage: 'Agent 专用模型，留空走主模型',
@@ -715,6 +727,22 @@ export const aigcConfig = {
           },
         ],
       },
+    },
+    {
+      label: '定时任务配置',
+      component: 'Divider',
+    },
+    {
+      field: 'scheduled_task.enable',
+      label: '启用定时任务',
+      bottomHelpMessage: '总开关：关闭时无法创建定时任务',
+      component: 'Switch',
+    },
+    {
+      field: 'scheduled_task.master_only',
+      label: '仅主人可用',
+      bottomHelpMessage: '仅主人可使用定时任务系统，false 则所有用户可用',
+      component: 'Switch',
     },
     {
       label: '代理配置',
