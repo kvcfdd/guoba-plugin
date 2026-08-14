@@ -346,6 +346,173 @@ export const otherConfig = {
   ],
 }
 
+export const agentConfig = {
+  agent: [
+    {
+      label: '通用配置',
+      component: 'Divider',
+    },
+    {
+      field: 'enable',
+      label: '启用Agent子系统',
+      bottomHelpMessage: '总开关：关闭时主模型无法派发 Agent 任务',
+      component: 'Switch',
+    },
+    {
+      field: 'qq_whitelist',
+      label: '用户白名单',
+      bottomHelpMessage: '仅主人 + 名单内用户可使用 Agent 子系统（主人默认可用，无需添加）',
+      component: 'GTags',
+      componentProps: {
+        placeholder: '请输入QQ号',
+        allowAdd: true,
+        allowDel: true,
+      },
+    },
+    {
+      field: 'model',
+      label: 'Agent 模型',
+      bottomHelpMessage: 'Agent 专用模型，必填，未配置则 Agent 任务直接失败',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入 Agent 模型名称',
+      },
+    },
+    {
+      field: 'max_tokens',
+      label: '最大Token',
+      bottomHelpMessage: 'Agent 输出最大 token 数',
+      component: 'InputNumber',
+      componentProps: {
+        min: 1,
+        placeholder: '请输入最大 Token 数',
+      },
+    },
+    {
+      field: 'max_rounds',
+      label: '最大轮次',
+      bottomHelpMessage: 'Agent 思考最大轮次',
+      component: 'InputNumber',
+      componentProps: {
+        min: 2,
+        max: 50,
+        placeholder: '请输入最大轮次',
+      },
+    },
+    {
+      field: 'workspace_ttl',
+      label: '工作区过期时间',
+      bottomHelpMessage: '工作区文件过期时间(秒)，0 不自动清理',
+      component: 'InputNumber',
+      componentProps: {
+        min: 0,
+        placeholder: '请输入过期时间',
+      },
+    },
+    {
+      field: 'workspace_max_file_mb',
+      label: '单文件上限(MB)',
+      bottomHelpMessage: '工作区单文件大小上限',
+      component: 'InputNumber',
+      componentProps: {
+        min: 1,
+        placeholder: '请输入单文件上限',
+      },
+    },
+    {
+      field: 'workspace_max_total_mb',
+      label: '总大小上限(MB)',
+      bottomHelpMessage: '工作区总大小上限',
+      component: 'InputNumber',
+      componentProps: {
+        min: 1,
+        placeholder: '请输入总大小上限',
+      },
+    },
+    {
+      field: 'mcp.servers',
+      label: 'MCP 服务器',
+      bottomHelpMessage: 'Agent 专用 MCP 工具服务器配置',
+      component: 'GSubForm',
+      componentProps: {
+        multiple: true,
+        modalProps: {
+          title: 'MCP 服务器配置',
+        },
+        schemas: [
+          {
+            field: 'name',
+            label: '名称',
+            component: 'Input',
+            required: true,
+            componentProps: { placeholder: '服务器名称' },
+          },
+          {
+            field: 'transport',
+            label: '传输方式',
+            component: 'Select',
+            required: true,
+            componentProps: {
+              options: [
+                { label: 'HTTP', value: 'http' },
+                { label: 'stdio', value: 'stdio' },
+              ],
+              placeholder: '请选择传输方式',
+            },
+          },
+          {
+            field: 'url',
+            label: 'URL',
+            bottomHelpMessage: 'HTTP 传输时填写',
+            component: 'Input',
+            componentProps: { placeholder: 'http://localhost:3100/mcp' },
+          },
+          {
+            field: 'api_key',
+            label: 'API Key',
+            bottomHelpMessage: 'HTTP 鉴权（可选）',
+            component: 'Input',
+            componentProps: { placeholder: 'API Key' },
+          },
+          {
+            field: 'command',
+            label: '命令',
+            bottomHelpMessage: 'stdio 传输时填写',
+            component: 'Input',
+            componentProps: { placeholder: 'npx' },
+          },
+          {
+            field: 'args',
+            label: '命令参数',
+            bottomHelpMessage: 'stdio 传输时填写',
+            component: 'GTags',
+            componentProps: {
+              placeholder: '请输入参数值',
+              allowAdd: true,
+            },
+          },
+          {
+            field: 'timeout_ms',
+            label: '超时(毫秒)',
+            component: 'InputNumber',
+            componentProps: {
+              min: 1000,
+              placeholder: '30000',
+            },
+          },
+          {
+            field: 'protocol_version',
+            label: '协议版本',
+            bottomHelpMessage: 'MCP 协议版本（可选）',
+            component: 'Input',
+            componentProps: { placeholder: '请输入协议版本' },
+          },
+        ],
+      },
+    },
+  ],
+}
+
 export const aigcConfig = {
   aigc: [
     {
@@ -572,163 +739,6 @@ export const aigcConfig = {
       },
     },
     {
-      label: 'Agent 任务执行配置',
-      component: 'Divider',
-    },
-    {
-      field: 'agent.enable',
-      label: '启用Agent子系统',
-      bottomHelpMessage: '总开关：关闭时主模型无法派发 Agent 任务',
-      component: 'Switch',
-    },
-    {
-      field: 'agent.master_only',
-      label: '仅主人可用',
-      bottomHelpMessage: '仅主人可使用 Agent 子系统，false 则所有用户可用',
-      component: 'Switch',
-    },
-    {
-      field: 'agent.model',
-      label: 'Agent 模型',
-      bottomHelpMessage: 'Agent 专用模型，留空走主模型',
-      component: 'Input',
-      componentProps: {
-        placeholder: '请输入 Agent 模型名称',
-      },
-    },
-    {
-      field: 'agent.max_tokens',
-      label: 'Agent 最大Token',
-      bottomHelpMessage: 'Agent 输出最大 token 数',
-      component: 'InputNumber',
-      componentProps: {
-        min: 1,
-        placeholder: '请输入最大 Token 数',
-      },
-    },
-    {
-      field: 'agent.max_rounds',
-      label: 'Agent 最大轮次',
-      bottomHelpMessage: 'Agent 思考最大轮次',
-      component: 'InputNumber',
-      componentProps: {
-        min: 2,
-        max: 50,
-        placeholder: '请输入最大轮次',
-      },
-    },
-    {
-      field: 'agent.workspace_ttl',
-      label: '工作区过期时间',
-      bottomHelpMessage: '工作区文件过期时间(秒)，0 不自动清理',
-      component: 'InputNumber',
-      componentProps: {
-        min: 0,
-        placeholder: '请输入过期时间',
-      },
-    },
-    {
-      field: 'agent.workspace_max_file_mb',
-      label: '单文件上限(MB)',
-      bottomHelpMessage: '工作区单文件大小上限',
-      component: 'InputNumber',
-      componentProps: {
-        min: 1,
-        placeholder: '请输入单文件上限',
-      },
-    },
-    {
-      field: 'agent.workspace_max_total_mb',
-      label: '总大小上限(MB)',
-      bottomHelpMessage: '工作区总大小上限',
-      component: 'InputNumber',
-      componentProps: {
-        min: 1,
-        placeholder: '请输入总大小上限',
-      },
-    },
-    {
-      field: 'agent.mcp.servers',
-      label: 'Agent MCP 服务器',
-      bottomHelpMessage: 'Agent 专用 MCP 工具服务器配置',
-      component: 'GSubForm',
-      componentProps: {
-        multiple: true,
-        modalProps: {
-          title: 'Agent MCP 服务器配置',
-        },
-        schemas: [
-          {
-            field: 'name',
-            label: '名称',
-            component: 'Input',
-            required: true,
-            componentProps: { placeholder: '服务器名称' },
-          },
-          {
-            field: 'transport',
-            label: '传输方式',
-            component: 'Select',
-            required: true,
-            componentProps: {
-              options: [
-                { label: 'HTTP', value: 'http' },
-                { label: 'stdio', value: 'stdio' },
-              ],
-              placeholder: '请选择传输方式',
-            },
-          },
-          {
-            field: 'url',
-            label: 'URL',
-            bottomHelpMessage: 'HTTP 传输时填写',
-            component: 'Input',
-            componentProps: { placeholder: 'http://localhost:3100/mcp' },
-          },
-          {
-            field: 'api_key',
-            label: 'API Key',
-            bottomHelpMessage: 'HTTP 鉴权（可选）',
-            component: 'Input',
-            componentProps: { placeholder: 'API Key' },
-          },
-          {
-            field: 'command',
-            label: '命令',
-            bottomHelpMessage: 'stdio 传输时填写',
-            component: 'Input',
-            componentProps: { placeholder: 'npx' },
-          },
-          {
-            field: 'args',
-            label: '命令参数',
-            bottomHelpMessage: 'stdio 传输时填写',
-            component: 'GTags',
-            componentProps: {
-              placeholder: '请输入参数值',
-              allowAdd: true,
-            },
-          },
-          {
-            field: 'timeout_ms',
-            label: '超时(毫秒)',
-            component: 'InputNumber',
-            componentProps: {
-              min: 1000,
-              placeholder: '30000',
-            },
-          },
-          {
-            field: 'protocol_version',
-            label: '协议版本',
-            bottomHelpMessage: 'MCP 协议版本（可选）',
-            component: 'Input',
-            componentProps: { placeholder: '请输入协议版本' },
-          },
-        ],
-      },
-    },
-    {
       label: '定时任务配置',
       component: 'Divider',
     },
@@ -739,10 +749,15 @@ export const aigcConfig = {
       component: 'Switch',
     },
     {
-      field: 'scheduled_task.master_only',
-      label: '仅主人可用',
-      bottomHelpMessage: '仅主人可使用定时任务系统，false 则所有用户可用',
-      component: 'Switch',
+      field: 'scheduled_task.qq_whitelist',
+      label: '用户白名单',
+      bottomHelpMessage: '仅主人 + 名单内用户可使用定时任务系统（主人默认可用，无需添加）',
+      component: 'GTags',
+      componentProps: {
+        placeholder: '请输入QQ号',
+        allowAdd: true,
+        allowDel: true,
+      },
     },
     {
       label: '代理配置',
@@ -1103,6 +1118,16 @@ export const maintConfig = {
       },
     },
     {
+      field: 'clean_min_age_days',
+      label: '文件最小存在时长(天)',
+      bottomHelpMessage: '仅删除已存在超过该时长的文件，0 表示不限制',
+      component: 'InputNumber',
+      componentProps: {
+        min: 0,
+        placeholder: '请输入最小存在天数',
+      },
+    },
+    {
       field: 'timeout',
       label: 'Git命令超时',
       bottomHelpMessage: 'Git命令超时时间（毫秒）',
@@ -1179,6 +1204,18 @@ export const extraTabs = {
         title: 'AIGC设置',
         desc: '对AIGC进行相关配置',
         schemas: aigcConfig.aigc,
+      },
+    ],
+  },
+  agent: {
+    key: 'agent',
+    title: 'Agent配置',
+    cards: [
+      {
+        key: 'system.agent',
+        title: 'Agent 后台任务子系统',
+        desc: '对 Agent 后台任务子系统进行相关配置',
+        schemas: agentConfig.agent,
       },
     ],
   },

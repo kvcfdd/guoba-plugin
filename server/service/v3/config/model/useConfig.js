@@ -412,6 +412,7 @@ export const configFile = {
   'system.maint': '/config/config/maint_task.yaml',
 
   'system.aigc': '/config/config/aigc.yaml',
+  'system.agent': '/config/config/agent.yaml',
   'system.milky': '/config/config/milky.yaml',
   'system.satori': '/config/config/satori.yaml',
 
