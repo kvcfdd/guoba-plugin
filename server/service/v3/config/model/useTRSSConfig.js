@@ -400,6 +400,16 @@ export const agentConfig = {
       },
     },
     {
+      field: 'system_prompt',
+      label: '系统提示词',
+      bottomHelpMessage: 'Agent 系统提示词（behavior_rules 块），留空回退内置默认',
+      component: 'InputTextArea',
+      componentProps: {
+        placeholder: '请输入 Agent 系统提示词',
+        rows: 10,
+      },
+    },
+    {
       field: 'workspace_ttl',
       label: '工作区过期时间',
       bottomHelpMessage: '工作区文件过期时间(秒)，0 不自动清理',
@@ -920,164 +930,6 @@ export const aigcConfig = {
   ],
 }
 
-export const milkyConfig = {
-  milky: [
-    {
-      field: 'enable',
-      label: '启用Milky',
-      bottomHelpMessage: '是否启用Milky协议适配器',
-      component: 'Switch',
-    },
-    {
-      field: 'host',
-      label: '服务器地址',
-      component: 'Input',
-      componentProps: {
-        placeholder: '请输入Milky服务器地址',
-      },
-    },
-    {
-      field: 'port',
-      label: '服务器端口',
-      component: 'InputNumber',
-      componentProps: {
-        min: 1,
-        max: 65535,
-        placeholder: '请输入端口号',
-      },
-    },
-    {
-      field: 'prefix',
-      label: 'URL前缀',
-      component: 'Input',
-      componentProps: {
-        placeholder: '请输入URL前缀',
-      },
-    },
-    {
-      field: 'access_token',
-      label: '鉴权Token',
-      component: 'Input',
-      componentProps: {
-        placeholder: '请输入鉴权Token',
-      },
-    },
-    {
-      field: 'connection',
-      label: '连接方式',
-      component: 'Select',
-      componentProps: {
-        options: [
-          { label: 'WebSocket', value: 'ws' },
-          { label: 'Webhook', value: 'webhook' },
-        ],
-        placeholder: '请选择连接方式',
-      },
-    },
-    {
-      field: 'webhook.path',
-      label: 'Webhook路径',
-      bottomHelpMessage: '仅Webhook模式有效',
-      component: 'Input',
-      componentProps: {
-        placeholder: '请输入Webhook路径',
-      },
-    },
-    {
-      field: 'ws.heartbeat',
-      label: '心跳间隔',
-      bottomHelpMessage: '仅WebSocket模式有效，单位：秒',
-      component: 'InputNumber',
-      componentProps: {
-        min: 1,
-        placeholder: '请输入心跳间隔（秒）',
-      },
-    },
-    {
-      field: 'ws.reconnect_interval',
-      label: '重连间隔',
-      bottomHelpMessage: '仅WebSocket模式有效，单位：秒',
-      component: 'InputNumber',
-      componentProps: {
-        min: 1,
-        placeholder: '请输入重连间隔（秒）',
-      },
-    },
-    {
-      field: 'http_timeout',
-      label: 'HTTP超时',
-      component: 'InputNumber',
-      componentProps: {
-        min: 1,
-        placeholder: '请输入超时时间（秒）',
-      },
-    },
-  ],
-}
-
-export const satoriConfig = {
-  satori: [
-    {
-      field: 'enable',
-      label: '启用Satori',
-      bottomHelpMessage: '是否启用Satori协议适配器',
-      component: 'Switch',
-    },
-    {
-      field: 'http_endpoint',
-      label: 'HTTP终结点',
-      component: 'Input',
-      componentProps: {
-        placeholder: '请输入HTTP终结点地址',
-      },
-    },
-    {
-      field: 'ws_endpoint',
-      label: 'WebSocket终结点',
-      component: 'Input',
-      componentProps: {
-        placeholder: '请输入WebSocket终结点地址',
-      },
-    },
-    {
-      field: 'token',
-      label: '访问令牌',
-      component: 'Input',
-      componentProps: {
-        placeholder: '请输入API访问令牌',
-      },
-    },
-    {
-      field: 'platform',
-      label: '平台名称',
-      component: 'Input',
-      componentProps: {
-        placeholder: '请输入平台名称',
-      },
-    },
-    {
-      field: 'timeout',
-      label: '超时时间',
-      bottomHelpMessage: '单位：毫秒',
-      component: 'InputNumber',
-      componentProps: {
-        min: 0,
-        placeholder: '请输入超时时间（毫秒）',
-      },
-    },
-    {
-      field: 'heartbeat_interval',
-      label: '心跳间隔',
-      bottomHelpMessage: '单位：毫秒',
-      component: 'InputNumber',
-      componentProps: {
-        min: 0,
-        placeholder: '请输入心跳间隔（毫秒）',
-      },
-    },
-  ],
-}
-
 export const maintConfig = {
   maint: [
     {
@@ -1216,30 +1068,6 @@ export const extraTabs = {
         title: 'Agent 后台任务子系统',
         desc: '对 Agent 后台任务子系统进行相关配置',
         schemas: agentConfig.agent,
-      },
-    ],
-  },
-  milky: {
-    key: 'milky',
-    title: 'Milky配置',
-    cards: [
-      {
-        key: 'system.milky',
-        title: 'Milky协议配置',
-        desc: '对Milky协议适配器进行相关配置',
-        schemas: milkyConfig.milky,
-      },
-    ],
-  },
-  satori: {
-    key: 'satori',
-    title: 'Satori配置',
-    cards: [
-      {
-        key: 'system.satori',
-        title: 'Satori协议配置',
-        desc: '对Satori协议适配器进行相关配置',
-        schemas: satoriConfig.satori,
       },
     ],
   },
