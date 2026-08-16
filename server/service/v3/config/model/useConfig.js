@@ -413,6 +413,7 @@ export const configFile = {
 
   'system.aigc': '/config/config/aigc.yaml',
   'system.agent': '/config/config/agent.yaml',
+  'system.gsuid': '/config/config/gsuid.yaml',
 
   'genshin.gacha': '/plugins/genshin/config/gacha.set.yaml',
   'genshin.mys.pubCk': '/plugins/genshin/config/mys.pubCk.yaml',

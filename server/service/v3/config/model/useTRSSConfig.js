@@ -1034,6 +1034,90 @@ export const maintConfig = {
   ],
 }
 
+export const gsuidConfig = {
+  gsuid: [
+    {
+      label: '连接配置',
+      component: 'Divider',
+    },
+    {
+      field: 'enable',
+      label: '启用早柚核心连接',
+      bottomHelpMessage: '总开关：关闭时不主动连接、断开后不重连',
+      component: 'Switch',
+    },
+    {
+      field: 'url',
+      label: '核心WS地址',
+      bottomHelpMessage: '早柚核心(GsCore)的 /ws/{bot_id} 端点地址',
+      component: 'Input',
+      componentProps: {
+        placeholder: 'ws://localhost:8765/ws/yunzai',
+      },
+    },
+    {
+      field: 'token',
+      label: '连接Token',
+      bottomHelpMessage: '核心侧配置了 WS_TOKEN 时必填，同机运行可留空',
+      component: 'InputPassword',
+      componentProps: {
+        placeholder: '请输入Token',
+      },
+    },
+    {
+      field: 'bot_id',
+      label: '平台ID',
+      bottomHelpMessage: '上报给核心的 bot_id（聊天平台标识，OneBotv11 对应 onebot）',
+      component: 'Input',
+      componentProps: {
+        placeholder: 'onebot',
+      },
+    },
+    {
+      field: 'reconnect_interval',
+      label: '断线重连间隔',
+      bottomHelpMessage: '断线后重连间隔时间，单位秒',
+      component: 'InputNumber',
+      componentProps: {
+        min: 1,
+        placeholder: '请输入重连间隔',
+      },
+    },
+    {
+      label: '上报过滤',
+      component: 'Divider',
+    },
+    {
+      field: 'forward_self_msg',
+      label: '转发自身消息',
+      bottomHelpMessage: '是否转发机器人自己发出的消息（默认关闭，防止回声循环）',
+      component: 'Switch',
+    },
+    {
+      field: 'no_report_start',
+      label: '开头过滤',
+      bottomHelpMessage: '消息以任一开头文本开始时不上报；与结尾过滤同时配置时需两者都符合才不上报',
+      component: 'GTags',
+      componentProps: {
+        placeholder: '请输入开头文本',
+        allowAdd: true,
+        allowDel: true,
+      },
+    },
+    {
+      field: 'no_report_end',
+      label: '结尾过滤',
+      bottomHelpMessage: '消息以任一结尾文本结束时不上报；仅配置一项时只匹配该项',
+      component: 'GTags',
+      componentProps: {
+        placeholder: '请输入结尾文本',
+        allowAdd: true,
+        allowDel: true,
+      },
+    },
+  ],
+}
+
 export const extraTabs = {
   maint: {
     key: 'maint',
@@ -1068,6 +1152,18 @@ export const extraTabs = {
         title: 'Agent 后台任务子系统',
         desc: '对 Agent 后台任务子系统进行相关配置',
         schemas: agentConfig.agent,
+      },
+    ],
+  },
+  gsuid: {
+    key: 'gsuid',
+    title: '早柚核心',
+    cards: [
+      {
+        key: 'system.gsuid',
+        title: '早柚核心连接',
+        desc: '对早柚核心(GsCore)连接适配器进行相关配置',
+        schemas: gsuidConfig.gsuid,
       },
     ],
   },
