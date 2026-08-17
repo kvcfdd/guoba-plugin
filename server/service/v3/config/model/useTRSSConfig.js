@@ -372,7 +372,7 @@ export const agentConfig = {
     {
       field: 'model',
       label: 'Agent 模型',
-      bottomHelpMessage: 'Agent 专用模型，必填，未配置则 Agent 任务直接失败',
+      bottomHelpMessage: 'Agent 模型',
       component: 'Input',
       componentProps: {
         placeholder: '请输入 Agent 模型名称',
@@ -561,18 +561,6 @@ export const aigcConfig = {
       componentProps: {
         min: 1,
         placeholder: '请输入最大Token数',
-      },
-    },
-    {
-      field: 'temperature',
-      label: '随机程度',
-      bottomHelpMessage: '0-2，值越大输出越随机',
-      component: 'InputNumber',
-      componentProps: {
-        min: 0,
-        max: 2,
-        step: 0.1,
-        placeholder: '请输入随机程度',
       },
     },
     {
