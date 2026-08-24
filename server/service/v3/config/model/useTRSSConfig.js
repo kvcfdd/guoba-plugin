@@ -648,6 +648,12 @@ export const aigcConfig = {
       },
     },
     {
+      field: 'bare_at_reply',
+      label: '裸@回复',
+      bottomHelpMessage: '仅@机器人且无文本无媒体时是否触发对话，默认关闭',
+      component: 'Switch',
+    },
+    {
       label: '水群模式',
       component: 'Divider',
     },
