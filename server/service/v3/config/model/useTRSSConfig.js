@@ -410,16 +410,6 @@ export const agentConfig = {
       },
     },
     {
-      field: 'workspace_ttl',
-      label: '工作区过期时间',
-      bottomHelpMessage: '工作区文件过期时间(秒)，0 不自动清理',
-      component: 'InputNumber',
-      componentProps: {
-        min: 0,
-        placeholder: '请输入过期时间',
-      },
-    },
-    {
       field: 'workspace_max_file_mb',
       label: '单文件上限(MB)',
       bottomHelpMessage: '工作区单文件大小上限',
@@ -1112,7 +1102,115 @@ export const gsuidConfig = {
   ],
 }
 
+export const rendererConfig = {
+  renderer: [
+    {
+      label: '公共浏览器实例',
+      component: 'Divider',
+    },
+    {
+      field: 'browser.concurrency',
+      label: '并发数',
+      bottomHelpMessage: '同时执行的最大任务数',
+      component: 'InputNumber',
+      componentProps: {
+        min: 1,
+        placeholder: '请输入并发数',
+      },
+    },
+    {
+      field: 'browser.restartNum',
+      label: '调用次数重启阈值',
+      bottomHelpMessage: '累计调用次数达到该值后自动重启浏览器，防止内存占用过高',
+      component: 'InputNumber',
+      componentProps: {
+        min: 1,
+        placeholder: '请输入重启阈值',
+      },
+    },
+    {
+      field: 'browser.idleTime',
+      label: '空闲回收（分钟）',
+      bottomHelpMessage: '无任务空闲超过该时长自动关闭浏览器释放内存，下次调用自动重启；0 或负数表示关闭回收',
+      component: 'InputNumber',
+      componentProps: {
+        min: 0,
+        placeholder: '请输入空闲回收时间',
+      },
+    },
+    {
+      label: 'Playwright 渲染器',
+      component: 'Divider',
+    },
+    {
+      field: 'playwright.scale',
+      label: '缩放比例',
+      bottomHelpMessage: '缩放比例：越大质量越高，处理越慢、文件越大',
+      component: 'InputNumber',
+      componentProps: {
+        min: 0.1,
+        step: 0.1,
+        placeholder: '请输入缩放比例',
+      },
+    },
+    {
+      field: 'playwright.injectGlobalStyle',
+      label: '注入全局样式',
+      bottomHelpMessage: '是否注入全局美颜 CSS（相当于套个滤镜）',
+      component: 'Switch',
+    },
+    {
+      label: 'HTTP 渲染服务（POST /render）',
+      component: 'Divider',
+    },
+    {
+      field: 'server.enable',
+      label: '启用渲染服务',
+      bottomHelpMessage: '独立 HTTP 渲染服务开关，需重启生效；默认关闭',
+      component: 'Switch',
+    },
+    {
+      field: 'server.host',
+      label: '监听地址',
+      bottomHelpMessage: '默认仅监听本机，需重启生效',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入监听地址',
+      },
+    },
+    {
+      field: 'server.port',
+      label: '监听端口',
+      bottomHelpMessage: '需重启生效',
+      component: 'InputNumber',
+      componentProps: {
+        min: 1,
+        max: 65535,
+        placeholder: '请输入监听端口',
+      },
+    },
+    {
+      field: 'server.injectGlobalStyle',
+      label: '注入全局样式',
+      bottomHelpMessage: '是否注入全局美颜 CSS',
+      component: 'Switch',
+    },
+  ],
+}
+
 export const extraTabs = {
+  renderer: {
+    key: 'renderer',
+    title: '实例&渲染器配置',
+    cards: [
+      {
+        key: 'system.renderer',
+        title: '渲染器设置',
+        desc: '对浏览器实例与渲染器参数进行相关配置',
+        schemas: rendererConfig.renderer,
+      },
+    ],
+  },
   maint: {
     key: 'maint',
     title: '维护配置',

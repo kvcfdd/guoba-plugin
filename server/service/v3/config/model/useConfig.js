@@ -411,6 +411,8 @@ export const configFile = {
 
   'system.maint': '/config/config/maint_task.yaml',
 
+  'system.renderer': '/config/config/renderer.yaml',
+
   'system.aigc': '/config/config/aigc.yaml',
   'system.agent': '/config/config/agent.yaml',
   'system.gsuid': '/config/config/gsuid.yaml',
