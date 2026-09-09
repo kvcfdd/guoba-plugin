@@ -629,6 +629,35 @@ export const aigcConfig = {
       component: 'Switch',
     },
     {
+      label: '思维链重建',
+      component: 'Divider',
+    },
+    {
+      field: 'thinking_reconstruct.enable',
+      label: '启用思维链重建',
+      bottomHelpMessage: '主模型回复后由子模型基于对话上下文人味儿化还原中文思维链再转发（需开启显示思维链）',
+      component: 'Switch',
+    },
+    {
+      field: 'thinking_reconstruct.model',
+      label: '重建子模型',
+      bottomHelpMessage: '留空使用默认档位 gemini-3.6-flash',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入子模型名称',
+      },
+    },
+    {
+      field: 'thinking_reconstruct.timeout_ms',
+      label: '重建超时(毫秒)',
+      bottomHelpMessage: '子模型调用超时后降级为原始摘要转发',
+      component: 'InputNumber',
+      componentProps: {
+        min: 1000,
+        placeholder: '180000',
+      },
+    },
+    {
       field: 'bilibili_cookie',
       label: 'Bilibili Cookie',
       bottomHelpMessage: 'Bilibili Cookie，用于视频搜索/下载工具',
