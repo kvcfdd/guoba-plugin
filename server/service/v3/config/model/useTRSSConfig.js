@@ -741,12 +741,6 @@ export const aigcConfig = {
       },
     },
     {
-      field: 'gemini.stateful',
-      label: '有状态模式',
-      bottomHelpMessage: '有状态模式：服务端管理上下文，无需客户端轮询 Key（仅用第一个 Key）',
-      component: 'Switch',
-    },
-    {
       field: 'gemini.thinking_level',
       label: '思考等级',
       bottomHelpMessage: '思考等级: minimal, low, medium, high',
