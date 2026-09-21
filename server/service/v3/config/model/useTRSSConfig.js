@@ -410,26 +410,6 @@ export const agentConfig = {
       },
     },
     {
-      field: 'workspace_max_file_mb',
-      label: '单文件上限(MB)',
-      bottomHelpMessage: '工作区单文件大小上限',
-      component: 'InputNumber',
-      componentProps: {
-        min: 1,
-        placeholder: '请输入单文件上限',
-      },
-    },
-    {
-      field: 'workspace_max_total_mb',
-      label: '总大小上限(MB)',
-      bottomHelpMessage: '工作区总大小上限',
-      component: 'InputNumber',
-      componentProps: {
-        min: 1,
-        placeholder: '请输入总大小上限',
-      },
-    },
-    {
       field: 'mcp.servers',
       label: 'MCP 服务器',
       bottomHelpMessage: 'Agent 专用 MCP 工具服务器配置',
@@ -1036,6 +1016,18 @@ export const maintConfig = {
       component: 'Input',
       componentProps: {
         placeholder: '请输入服务名称',
+      },
+    },
+    {
+      field: 'mihomo.rules',
+      label: '分流规则',
+      bottomHelpMessage: '分流规则',
+      component: 'GTags',
+      componentProps: {
+        placeholder: '如 MATCH,♻️自动选择',
+        allowAdd: true,
+        allowDel: true,
+        showPrompt: true,
       },
     },
   ],
