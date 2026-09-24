@@ -68,54 +68,25 @@ const baseConfig = {
     {
       key: 'system.redis',
       title: 'Redis配置',
-      desc: '对Redis服务器进行相关配置',
+      desc: '实际为 SQLite',
       schemas: [
         {
-          field: 'host',
-          label: 'Redis地址',
-          required: true,
+          field: 'storage',
+          label: 'Redis数据库文件地址',
+          bottomHelpMessage: '实际为SQLite的兼容文件',
           component: 'Input',
           componentProps: {
-            placeholder: '请输入Redis地址',
+            placeholder: 'data/db/redis.db',
           },
         },
         {
-          field: 'port',
-          label: 'Redis端口',
-          required: true,
+          field: 'sweep_interval_ms',
+          label: '过期键清扫间隔(ms)',
+          bottomHelpMessage: '读取时也会判定过期，这里只是后台兜底回收，一般不用改',
           component: 'InputNumber',
           componentProps: {
-            placeholder: '请输入Redis端口',
-            min: 1,
-            max: 65535,
-          },
-        },
-        {
-          field: 'username',
-          label: 'Redis用户名',
-          bottomHelpMessage: '没有用户名可以为空',
-          component: 'Input',
-          componentProps: {
-            placeholder: '请输入Redis用户名',
-          },
-        },
-        {
-          field: 'password',
-          label: 'Redis密码',
-          bottomHelpMessage: '没有密码可以为空',
-          component: 'InputPassword',
-          componentProps: {
-            placeholder: '请输入Redis密码',
-          },
-        },
-        {
-          field: 'db',
-          label: 'Redis数据库',
-          required: true,
-          bottomHelpMessage: '一般不用改',
-          component: 'InputNumber',
-          componentProps: {
-            placeholder: '请输入Redis数据库',
+            placeholder: '60000',
+            min: 1000,
           },
         },
       ],
