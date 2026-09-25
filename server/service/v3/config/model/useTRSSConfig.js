@@ -603,6 +603,50 @@ export const aigcConfig = {
       },
     },
     {
+      label: '上下文管理',
+      component: 'Divider',
+    },
+    {
+      field: 'context_rounds',
+      label: '携带上下文轮数',
+      bottomHelpMessage: '每次请求携带的上下文轮数，0则不携带',
+      component: 'InputNumber',
+      componentProps: {
+        min: 0,
+        placeholder: '20',
+      },
+    },
+    {
+      field: 'context_tool_full_rounds',
+      label: '工具结果完整保留轮数',
+      bottomHelpMessage: '最近若干轮的工具结果完整保留，更早的按下面的长度截断；0表示不再有完整保留的轮次',
+      component: 'InputNumber',
+      componentProps: {
+        min: 0,
+        placeholder: '7',
+      },
+    },
+    {
+      field: 'context_tool_max_chars',
+      label: '工具结果截断长度',
+      bottomHelpMessage: '更早轮次工具结果保留的字符数，0表示不截断',
+      component: 'InputNumber',
+      componentProps: {
+        min: 0,
+        placeholder: '200',
+      },
+    },
+    {
+      field: 'context_retention_days',
+      label: '上下文保留天数',
+      bottomHelpMessage: '对所有用户生效：超期轮次由每日定时任务整轮清理；0表示不限制',
+      component: 'InputNumber',
+      componentProps: {
+        min: 0,
+        placeholder: '0',
+      },
+    },
+    {
       field: 'show_thinking',
       label: '显示思维链',
       bottomHelpMessage: '是否将思维链以合并转发方式单独发送',
