@@ -65,32 +65,6 @@ const baseConfig = {
 
     },
     ...(CfgAdapter['baseConfig'].server ?? []),
-    {
-      key: 'system.redis',
-      title: 'Redis配置',
-      desc: '实际为 SQLite',
-      schemas: [
-        {
-          field: 'storage',
-          label: 'Redis数据库文件地址',
-          bottomHelpMessage: '实际为SQLite的兼容文件',
-          component: 'Input',
-          componentProps: {
-            placeholder: 'data/db/redis.db',
-          },
-        },
-        {
-          field: 'sweep_interval_ms',
-          label: '过期键清扫间隔(ms)',
-          bottomHelpMessage: '读取时也会判定过期，这里只是后台兜底回收，一般不用改',
-          component: 'InputNumber',
-          componentProps: {
-            placeholder: '60000',
-            min: 1000,
-          },
-        },
-      ],
-    },
   ],
 }
 
@@ -376,7 +350,6 @@ export const configFile = {
   'system.bot': '/config/config/bot.yaml',
   'system.qq': '/config/config/qq.yaml',
   'system.group': '/config/config/group.yaml',
-  'system.redis': '/config/config/redis.yaml',
   'system.other': '/config/config/other.yaml',
   'system.server': '/config/config/server.yaml',
 

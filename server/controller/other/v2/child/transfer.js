@@ -432,8 +432,9 @@ const configFileMapping = {
     path.join('/config/default_config/group.yaml')
   ],
   redis: [
-    path.join('/config/config/redis.yaml'),
-    path.join('/config/default_config/redis.yaml')
+    // 没啥鸟用避免报错
+    path.join('/config/config/db.yaml'),
+    path.join('/config/default_config/db.yaml')
   ],
   other: [
     path.join('/config/config/other.yaml'),
